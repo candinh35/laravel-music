@@ -71,4 +71,4 @@ Route::middleware('cus')->group(function () {
     Route::get('/playlist-table',   [PlaylistController::class, 'getPlaylist'])->name('playlist.table');
 });
 
-Route::get('/', [HomeController::class, 'demo'])->name('demo');
+Route::get('/demo', [HomeController::class, 'demo'])->name('demo');

@@ -61,6 +61,7 @@ class HomeController extends Controller
         if ($output === null) {
             return response()->json(['error' => 'Failed to execute script'], 500);
         }
+        return response()->json(['output' => $output]);
     }
 
     public function download(Request $request)
