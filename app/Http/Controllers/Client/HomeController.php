@@ -48,6 +48,21 @@ class HomeController extends Controller
         return view('client.home', compact('songs', 'albums', 'singers', 'genres', 'newSongs'));
     }
 
+    public function demo()
+    {
+        $scriptPath = storage_path('example.sh');       
+        if (!file_exists($scriptPath)) {
+            return response()->json(['error' => 'File not found: ' . $scriptPath], 404);
+        }
+       
+        $process = new Process([$scriptPath]);
+        $process->mustRun();
+        $output = $process->getOutput();
+        if ($output === null) {
+            return response()->json(['error' => 'Failed to execute script'], 500);
+        }
+    }
+
     public function download(Request $request)
     {
         try {
